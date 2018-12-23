@@ -108,10 +108,10 @@ ui <- fluidPage(
                         
                         #Add a tab for summary stats and plots
                         tabPanel("Summary Statistics and Plot",
-                                 #Add two subtabs
+                                 #Add subtabs - PLOT SUBTAB IS COMMENTED OUT FOR NOW
                                  tabsetPanel(
-                                     tabPanel("Summary",verbatimTextOutput("dataSummary")),
-                                     tabPanel("Inpatient Capacity vs. Distance Plot", plotOutput("plot"))
+                                     tabPanel("Summary",verbatimTextOutput("dataSummary"))#,
+                                     #tabPanel("Inpatient Capacity vs. Distance Plot", plotOutput("plot"))
                                  )
                         )
             )
@@ -244,13 +244,10 @@ server <- function(input, output) {
         })
         
         
-        # Plot scatter plot of capacity vs distance
-        output$plot <- renderPlot({
-            g <- ggplot(hospitals, aes(DIST, CAPACITY)) + geom_point() +
-                ggtitle("Inpatient Capacity vs. Distance of Searched Facilities") +
-                xlab("Distance from Input ZIP Code (miles)") + ylab("Inpatient Capacity")
-            g
-        })
+        # Display plot of some kind - UNCOMMENT PLOT TAB ON UI SIDE IF PLOTTING SOMETHING
+        # output$plot <- renderPlot({
+        #     
+        # })
     })
 }
 
